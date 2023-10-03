@@ -14,7 +14,10 @@ for(var i = 0; i < 7; i++){
 document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         var buttonKey = this.innerHTML;
 
+        animationPressed(buttonKey);
+
         playSound(buttonKey);
+
 });
 
 }
@@ -22,7 +25,9 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function(){
 
        document.addEventListener("keydown", function(){
 
+        
         playSound(event.key);
+        animationPressed(event.key);
 
        });
       
@@ -31,6 +36,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function(){
 
 function playSound(key){
 
+      
         switch (key) {
 
                 case "w":
@@ -68,4 +74,16 @@ function playSound(key){
                }
 }
 
+function animationPressed(currentKey){
 
+      var activated = document.querySelector("."+currentKey);
+      activated.classList.add("pressed");
+      
+      setTimeout(function(){
+        activated.classList.remove("pressed");
+}, 100);
+
+
+     
+
+}
